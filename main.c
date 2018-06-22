@@ -278,6 +278,9 @@ int main(int argc, char *argv[]) {
   if (ret < 0)
     ErrorExit(10000, "Error 0x%08X extracting psp2swu.self.\n", ret);
 
+  printf("Removing ux0:id.dat...\n");
+  sceIoRemove("ux0:id.dat");
+
   printf("Rebooting to update in 5 seconds...\n");
   sceKernelDelayThread(5 * 1000 * 1000);
   sceSblSsUpdateMgrSetBootMode(0x40);
